@@ -1,33 +1,15 @@
+"use client";
+
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, Eye } from "lucide-react";
+import { Product } from "@/types/product";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge, FoodBadge } from "@/components/ui/badge";
 import { ProductCard as BaseProductCard } from "@/components/ui/card";
-
-/**
- * Product type definition
- */
-export interface Product {
-  id: string;
-  name: string;
-  description?: string;
-  price: number;
-  imageUrl?: string;
-  category?: {
-    id: string;
-    name: string;
-  };
-  isVegetarian?: boolean;
-  isGlutenFree?: boolean;
-  isSpicy?: boolean;
-  isNew?: boolean;
-  isFeatured?: boolean;
-  isPopular?: boolean;
-}
 
 /**
  * Enhanced ProductCard component specifically for displaying product data
@@ -125,14 +107,7 @@ export function ProductCard({
   };
 
   return (
-    <Link 
-      href={`/products/${product.id}`} 
-      className={cn(
-        "block transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg",
-        className
-      )}
-      {...props}
-    >
+    <div className={cn("relative", className)} {...props}>
       <BaseProductCard
         title={product.name}
         price={product.price}
@@ -143,6 +118,13 @@ export function ProductCard({
         actions={actions}
         className="h-full"
       />
-    </Link>
+      
+      {/* Wrap the entire card in a Link, excluding the action buttons */}
+      <Link 
+        href={`/menu/product/${product.id}`} 
+        className="absolute inset-0 z-0"
+        aria-label={`View details for ${product.name}`}
+      />
+    </div>
   );
 }

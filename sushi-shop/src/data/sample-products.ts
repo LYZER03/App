@@ -1,22 +1,8 @@
 /**
- * Sample product data for development and testing purposes
+ * Sample product data for the Sushi Shop application
+ * This data is used for development and testing purposes
  */
-import { type Product } from "@/components/product/product-card";
-
-// Extended product type with additional details
-export interface ProductWithDetails extends Product {
-  images?: string[];
-  ingredients?: string[];
-  allergens?: string[];
-  nutritionalInfo?: {
-    calories?: number;
-    protein?: number;
-    carbs?: number;
-    fat?: number;
-  };
-  rating?: number;
-  reviewCount?: number;
-}
+import { Product, ProductWithDetails } from "@/types/product";
 
 export const sampleProducts: ProductWithDetails[] = [
   {
