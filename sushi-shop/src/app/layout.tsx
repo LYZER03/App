@@ -2,14 +2,20 @@ import type { Metadata } from 'next';
 import { Inter, Poppins, Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
 
-// Import the Redux provider (dynamic import in client component)
+// Import the providers (dynamic import in client component)
 import { ReduxProvider } from '@/components/providers/redux-provider';
+import { ThemeProvider } from '@/components/providers/theme-provider';
+import { MainLayout } from '@/components/layouts/main-layout';
 
 // Client component wrapper to avoid server component issues
-const ReduxProviderWrapper = ({ children }: { children: React.ReactNode }) => {
+const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <ReduxProvider>
-      {children}
+      <ThemeProvider defaultTheme="light" storageKey="sushi-shop-theme">
+        <MainLayout>
+          {children}
+        </MainLayout>
+      </ThemeProvider>
     </ReduxProvider>
   );
 };
@@ -49,9 +55,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${poppins.variable} ${notoSansJP.variable} font-sans antialiased`}
       >
-        <ReduxProviderWrapper>
+        <Providers>
           {children}
-        </ReduxProviderWrapper>
+        </Providers>
       </body>
     </html>
   );
