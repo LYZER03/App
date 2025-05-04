@@ -1,0 +1,8 @@
+# ✅ ALWAYS
+# Always read memory-bank/@architecture.md before writing any code. Include entire database schema.
+# Always read memory-bank/@app-design-document.md before writing any code to align with the system architecture and requirements.
+# Always refer to the database schema in memory-bank/@app-design-document.md section 4 before modifying data models or database logic.
+# After adding a major feature or completing a milestone, update memory-bank/@architecture.md with any new technologies or considerations.
+# After a major design decision, update memory-bank/@architecture.md to keep system architecture and features consistent.
+# Ensure code follows the development best practices outlined in memory-bank/tech-stack.md section 8.
+# Maintain the UI/UX design principles and style guidelines defined in memory-bank/@app-design-document.md section 6.
